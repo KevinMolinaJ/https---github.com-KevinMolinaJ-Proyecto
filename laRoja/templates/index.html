@@ -1,0 +1,153 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block link %}
+<link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+{% endblock link %}
+
+{% block contenido %}
+<section class="main">
+    <section class="acerca-de" id="acerca-de">
+        <div class="contenedor">
+            <div class="foto">
+                <img src="{% static 'img/brasil 2014.jpg' %}">
+
+            </div>
+            <article>
+                <h3>Pagina Oficial</h3>
+                <p>La Roja querida y su trayectoria al mundial...</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="Copa-america">
+        <div class="contenedor">
+            <div class="contenedor-Copa-america">
+                <div class="contenedor-Copa-america2">
+                    <article>
+                        <p class="categoria">
+                        <h3>Hitos de Nuestra Seleccion</h3>
+                        <br>
+                        <p>
+                            La seleccion chilena de futbol, posee momentos importantes en su Historia
+                            que contaremos a continuacion en esta pagina web dedicada a ella.
+                        </p>
+                        <br>
+                    </article>
+                </div>
+            </div>
+    </section>
+
+
+
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                aria-label="Slide 3"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3"
+                aria-label="Slide 4"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active" style="height: 500px; font-family: 'Times New Roman', Times, serif">
+                <img src="{% static 'img/1.jpg' %}" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h3>Lo ultimo en nuestras noticias...</h3>
+                </div>
+            </div>
+
+            {% for reg in noticias %}
+                <div class="carousel-item" style="height: 500px; font-family: 'Times New Roman', Times, serif">
+                    <img src="{{reg.imagen.url}}" class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h3>Titulo: {{reg.titulo}}</h3>
+                        <h5>Categoria: {{reg.categoria}}</h5>
+                        <button class="btn btn-primary" style="color: white; font-size: 120%;" onclick="javascript:location.href='/noticia/{{reg.titulo}}/'">Ver Noticia</button>
+                    </div>
+                </div>
+            {% endfor %}
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <div style="text-align: center; font-family: 'Times New Roman', Times, serif; font-size: 25px;"><a href="http://127.0.0.1:8154/api/noticias/">API NoticiasViewSet</a></div>
+    <div style="text-align: center; font-family: 'Times New Roman', Times, serif; font-size: 25px;"><a href="http://127.0.0.1:8154/api/noticiacrear/">API NoticiasCreateViewSet</a></div>
+    {% for reg in noticias %}  
+        <div style="text-align: center; font-family: 'Times New Roman', Times, serif; font-size: 25px;"><a href="http://127.0.0.1:8154/api/noticia/{{reg.titulo}}/">API NoticiasBuscarViewSet ({{reg.titulo}})</a></div>
+    {% endfor %}
+
+
+
+    <section class="galeria-info">
+        <h4 class="titulo-info">Categorias de nuestras noticias...</h4>
+        <div class="cont-foto">
+            {% for reg in categorias %}
+            <div class="foto-cate">
+                <a href="/filttrocatego/{{reg.tipo_noticia}}/">
+                    <img src="{{reg.imagen.url}}" alt="">
+                </a>
+                <h4>{{reg.tipo_noticia}}</h4>
+
+            </div>
+            {% endfor %}
+        </div>
+
+    </section>
+
+    <section class="suscribirse">
+        <div class="row">
+            <div class="col">
+                <h4>Suscribete para recibir nuestro contenido exclusivo...</h4>
+            </div>
+            <div class="col">
+                <input class="caja-sub" type="email" placeholder="Tu@email.com">
+                <input class="btn-suscribir" type="button" value="Suscribir">
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="ubicacion" id="ubicacion">
+        <div class="contenedor">
+            <h3 class="titulo">Ubicacion de nuestra tienda</h3>
+            <div class="direccion">
+                <p class="calle">Las Brisas 5117<br />Peñalolen</p>
+                <p class="telefono">(+569) 3505660</p>
+                <p class="correo electronico">correo[arroba]tucorreo.com</p>
+            </div>
+            <div class="horarios">
+                <h4>Horarios de atencion</h4>
+                <p class="Entre-semana">Lunes a Viernes <br> 8:30am - 18:30pm</p>
+                <p class="Fin-semana">Sabado a Domingo<br> 9:30am - 14:30pm</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="mapa">
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3326.820459938175!2d-70.58320098508969!3d-33.506048007753314!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662d04e96e9ba21%3A0x831efce15b82413f!2sLas%20Brisas%205117%2C%20Penalolen%2C%20Pe%C3%B1alol%C3%A9n%2C%20Regi%C3%B3n%20Metropolitana!5e0!3m2!1ses-419!2scl!4v1619900751201!5m2!1ses-419!2scl"
+            width="1600" height="550" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </section>
+</section>
+{% endblock contenido %}
+
+{% block js %}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+{% endblock js %}

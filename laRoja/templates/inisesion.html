@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block link %}
+    <link rel="stylesheet" href="{% static 'css/formulario.css' %}">
+{% endblock link %}  
+
+{% block contenido %}
+    <section class="main">
+        <section class="form-inisesion">
+            <div class="row">
+                <form class="formulario" action="{% url 'INISESION' %}" method="post" onsubmit="return validarFormInisesion()">
+                    {% csrf_token %}
+                    <h2>Iniciar Sesion</h2>
+                    <div class="form">
+                        <input class="caja-txt-xl" type="text" name="txt-user" id="txt-user" placeholder="Nombre de Usuario" required pattern="[A-Za-z]{2,20}" title="Ingrese solo letras">
+                        <input class="caja-txt-xl" type="password" name="txt-password" id="txt-password" placeholder="Password" required>
+                        <input class="btn-form" type="reset" value="Limpiar" id="btn-cancelar">
+                        <input class="btn-form" type="submit" value="Ingresar" id="btn-insesion">
+                    </div>
+                    <div style="color: red; font-size: xx-large;">{{mensaje}}</div>
+                </form>
+                
+            </div>
+        </section>     
+    </section>
+    
+{% endblock contenido %}
+    
+{% block js %}
+    <script src="{% static 'js/validar_insesion.js' %}"></script>
+{% endblock js %}

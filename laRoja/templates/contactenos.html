@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block link %}
+    <link rel="stylesheet" href="{% static 'css/formulario.css' %}"> 
+{% endblock link %}
+
+{% block contenido %}
+    <section class="main">
+        <section class="form-inisesion">
+            <div class="row">
+                <form class="formulario"  action="{% url 'CONTACTENOS' %}" method="post" onsubmit="return validarFromContactenos()">
+                    {% csrf_token %}
+                    <h2>Contactenos...</h2>
+                    <div class="form">
+                        <input class="caja-txt-sm" type="text" name="txt-nombre" id="txt-nombre" placeholder="Nombre" required pattern="[A-Za-z]{2,20}" title="Ingrese solo letras">
+                        <input class="caja-txt-sm" type="text" name="txt-apellido" id="txt-apellido" placeholder="Apellido" required pattern="[A-Za-z]{2,20}" title="Ingrese solo letras">
+                        <input class="caja-txt-sm" type="text" name="txt-fono" id="txt-fono" placeholder="Telefono" required pattern="[0-9]{9}" title="Ingrese formato de 9 numeros">
+                        <input class="caja-txt-sm" type="email" name="txt-email" id="txt-email" placeholder="Tu@correo.cl" required>
+                        <textarea class="caja-comen" type="text" name="txt-comen" id="txt-comen" cols="30" rows="6" placeholder="Comentario....." required ></textarea>
+                        <input class="btn-form" type="reset" value="Limpiar" id="btn-cancelar">
+                        <input class="btn-form" type="submit" value="Enviar" id="btn-insesion">
+                    </div>
+                    <div style="font-family: 'Times New Roman', Times, serif; font-size: xx-large;">{{mensaje}}</div>
+                </form>
+            </div>
+        </section>
+
+    </section>
+{% endblock contenido %}
+
+{% block js %}
+    <script src="{% static 'js/validar_contactenos.js' %}"></script>
+{% endblock js %}

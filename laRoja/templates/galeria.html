@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block link %}
+    <link rel="stylesheet" href="{% static 'css/galeria.css' %}">   
+{% endblock link %}
+
+{% block contenido %}
+    <section class="main">  
+        <section class="galeria">
+            <h2 class='titulo'>Galeria de nuestras noticias</h2>
+            <br>
+            <form action="{% url 'FILTROCATE' %}" method="post">
+            {% csrf_token %}
+                Filtro por categoria:
+                <select name="cboCatego" id="cboCatego">
+                    {% for reg in categorias %}
+                        <option>{{reg.tipo_noticia}}</option>
+                    {% endfor %}
+                </select>
+                <input type="submit" value="Filtrar">
+            </form>
+            
+            <form action="{% url 'BUSCARTIT' %}" method="post">
+                {% csrf_token %}
+                Busqueda por titulo noticia:
+                <input type="text" name="txtTitulo" id="txtTitulo">
+                <input type="submit" value="Buscar">
+            </form>
+
+            <form action="{% url 'FILTRODESC' %}" method="post">
+                {% csrf_token %}
+                Filtrar por descripcion:
+                <input type="text" name="txtDesc" id="txtDesc">
+                <input type="submit" value="Filtrar">
+            </form>
+
+            
+            <div class='cont-galeria'>
+            {% for reg in noticia %}
+            <article class="foto">
+                    <a href="{% url 'NOTICIA' reg.titulo %}">
+                        <img src="{{reg.imagen.url}}" alt="">
+                    </a> 
+                    <div class="tituloNoticia" style="text-align: center; font-family: 'Times New Roman', Times, serif;"> <h4>Titulo: {{reg.titulo}}</h4> </div>                 
+            </article>
+
+            
+
+                
+            {% endfor %}
+                
+            </div>
+            <div style="text-align: center; color: black; font-size: xx-large; font-family: 'Times New Roman', Times, serif;">
+                Cantidad de noticas: {{cantidad}}
+            </div>
+            
+
+    </section>
+{% endblock contenido %}
+    

@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block link %}
+<link rel="stylesheet" href="{% static 'css/quienSomos.css' %}">   
+{% endblock link %}    
+
+{% block contenido %}
+    <section class="main">
+
+        <section class="quienSomos">
+            <div class="texto">
+                <h2>Noticia</h2>
+                <article class="foto">
+                    <a href="{{noticia.imagen.url}}" data-lightbox="foto" data-title="{{noticia.descripcion}}"> <img src="{{noticia.imagen.url}}" alt=""> </a>
+                </article>
+                <div class="descrip">
+                    <h3>{{noticia.titulo}}</h3>
+                    <br>
+                    <h5>Categoria: {{noticia.categoria}}</h5>
+                    <p>Descripcion: {{noticia.descripcion}}</p>
+                </div>
+            </div>
+
+        </section>
+
+    </section>
+{% endblock contenido %}
+   

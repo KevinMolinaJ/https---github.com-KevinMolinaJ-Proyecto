@@ -1,0 +1,54 @@
+.main .galeria {
+    width: 75%;
+    margin: auto;
+    overflow: hidden;
+    max-width: 1280px;
+}
+
+.main .galeria .titulo {
+    margin-top: 30px;
+    text-align: center;
+    font-size: 30px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.galeria form{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.main .galeria .cont-galeria {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 80px;    
+}
+
+.main .galeria .cont-galeria article {
+    margin-bottom: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.main .galeria .cont-galeria .foto img {    
+    border-radius: 8px;
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    opacity: .7;
+}
+
+.main .galeria .cont-galeria .foto img:hover {
+    border-radius: 0px;
+    opacity: 1;
+    transition: 0.5s;
+}
+
+.tituloNoticia{
+    width: 100%;
+    margin-left: 20px;
+}
+
+

@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block link %}
+<link rel="stylesheet" href="{% static 'css/formulario.css' %}">
+<script src="{% static 'js/sweetalert2.all.min.js' %}"></script>
+{% endblock link %}
+
+{% block contenido %}
+<section class="main">
+    <section class="form-inisesion">
+        <div class="row">
+            <form class="formulario" action="{% url 'MODIFICAR' %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <h2>Modificar Noticia</h2>
+                <div class="form">
+                    <input class="caja-txt-sm" value="{{noticia.titulo}}" type="text" name="txtTitulo" id="txtTitulo"
+                        placeholder="Titulo Noticia..." required pattern="{5,100}" title="Ingrese solo letras">
+
+                    <input type="file" name="txtImg" id="txtImg" >
+
+                    Imagen actua: <a href="{{noticia.imagen.url}}">{{noticia.imagen.url}}</a>
+
+                    <select name="cboCategoria" id="cboCategoria" value="{{noticia.categoria}}" >
+                        {% for item in categoria %}
+                            {% if item.tipo_noticia == noticia.categoria.tipo_noticia %}
+                                <option selected>{{item.tipo_noticia}}</option>
+                            {% else %}
+                                <option>{{item.tipo_noticia}}</option>
+                            {% endif %}                        
+                        {% endfor %}
+                    </select>
+                    <textarea class="caja-comen" name="txtDesc" id="txtDesc" cols="30" rows="6"
+                        required>{{noticia.descripcion}}</textarea>
+                    <input class="btn-form" type="button" value="Cancelar" id="btn-cancelar">
+                    <input class="btn-form" type="submit" value="Modificar" id="btn-insesion">
+                </div>
+                <h1>{{mensaje}}</h1>
+            </form>
+        </div>
+    </section>
+</section>
+
+
+{% endblock contenido %}
+
+{% block js %}
+
+<script src="{% static 'js/validar_contactenos.js' %}"></script>
+
+{% endblock js %}

@@ -1,0 +1,85 @@
+.main {
+    display: flex;
+    justify-content: center;
+}
+
+
+
+.main .form-inisesion {
+    width: 80%;
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.main .form-inisesion .row {
+    width: 100%;
+}
+
+.main .form-inisesion .row .formulario {
+    width: 90%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 780px;
+    border: black 2px solid;
+    border-radius: 8px;
+    background-color: rgba(65, 65, 65, 0.5);
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.main .form-inisesion .row .formulario h2 {
+    width: 100%;
+    text-align: center;
+}
+
+.main .form-inisesion .row .formulario .form {
+    width: 100%;
+    display: flex;
+    padding: 20px;
+    flex-wrap: wrap;
+    border-top: black 2px solid;
+    justify-content: space-between;
+}
+
+.main .form-inisesion .row .formulario .form input { 
+    margin: auto;   
+    padding: 5px;
+    margin: 5px;
+    border-radius: 3px;
+}
+
+.caja-txt-xl {
+    width: 100%;
+}
+
+.caja-txt-sm {
+    width: 45%;
+}
+
+.caja-comen {
+    width: 100%;
+}
+
+.genero {
+    width: 45%;
+    margin: 5px;
+    padding: 5px;
+}
+
+.btn-form {
+    background-color: rgba(173, 69, 0, 0.5);
+}
+
+#btn-cancelar:hover {
+    background: red;
+    transition: 0.8s;
+    border: black 2px solid;
+}
+
+#btn-insesion:hover {
+    background: green;
+    transition: 0.8s;
+    border: black 2px solid;
+}
